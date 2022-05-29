@@ -35,7 +35,7 @@ public class VMService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         UserDao authenticatedUser = userRepository.findByUsername(userDetails.getUsername()).get();
         if (!authenticatedUser.getRole().getName().equals(Role.MASTER) && !authenticatedUser.getUsername().equals(userName)) {
-            log.error("User {} not allowed to access this resource", userName);
+            log.error("User {} not allowed to access this resource", userDetails.getUsername());
             return ResponseEntity.badRequest().body("User not allowed to access this resource");
         }
         Optional<UserDao> userDao = userRepository.findByUsername(userName);
@@ -54,7 +54,7 @@ public class VMService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         UserDao authenticatedUser = userRepository.findByUsername(userDetails.getUsername()).get();
         if (!authenticatedUser.getRole().getName().equals(Role.MASTER) && !authenticatedUser.getUsername().equals(userName)) {
-            log.error("User {} not allowed to access this resource", userName);
+            log.error("User {} not allowed to access this resource", userDetails.getUsername());
             return ResponseEntity.badRequest().body("User not allowed to access this resource");
         }
         Optional<UserDao> userDao = userRepository.findByUsername(userName);
