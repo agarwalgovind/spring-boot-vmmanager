@@ -29,6 +29,7 @@ public class VMDao {
     private String osName;
 
     @Getter
+    @Setter
     private Integer ramSizeInGB;
 
     @Getter
