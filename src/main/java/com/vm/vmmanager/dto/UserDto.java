@@ -12,7 +12,7 @@ public class UserDto {
 
     @NotBlank
     @Size(min = 3, max = 20)
-    @Pattern(regexp = "^[a-zA-Z]{3,20}")
+    @Pattern(regexp = "^[a-zA-Z0-9]{3,20}")
     private String username;
 
     @NotBlank
@@ -24,7 +24,7 @@ public class UserDto {
     private String email;
 
     @Size(max = 15)
-    @Pattern(regexp = "(^[0-9]{15})")
+    @Pattern(regexp = "(^[0-9]{10,15})")
     private String mobileNumber;
 
     private String role;
